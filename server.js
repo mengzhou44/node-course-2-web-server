@@ -9,10 +9,6 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
 
 app.use((req, res, next) => {
-  res.render('maintenance');
-});
-
-app.use((req, res, next) => {
   const date = new Date().toString();
   var log = `${date}: ${req.method}  ${req.url}`;
 
@@ -38,6 +34,13 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
   res.render('about', {
     pageTitle: 'About',
+    currentYear: new Date().getFullYear()
+  });
+});
+
+app.get('/portofolio', (req, res) => {
+  res.render('portofolio', {
+    pageTitle: 'Portofolio',
     currentYear: new Date().getFullYear()
   });
 });
